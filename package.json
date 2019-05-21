@@ -4,6 +4,7 @@
   "author": "Google Inc.",
   "description": "Node.js client library for Google Maps API Web Services",
   "main": "./lib",
+  "types": "./lib",
   "contributors": [
     {
       "name": "Stephen Farrar",
@@ -15,6 +16,9 @@
     }
   ],
   "scripts": {
+    "build": "tsc --declaration --project tsconfig.json && npm i -g --loglevel=error",
+    "build-fresh": "npm cache clean --force && npm i && npm run build",
+    "watch": "tsc --declaration --project tsconfig.json --watch",
     "test": "jasmine && jasmine spec/e2e/*.js",
     "jsdoc": "jsdoc -c docs/conf.json"
   },
@@ -44,10 +48,12 @@
   },
   "homepage": "https://github.com/googlemaps/google-maps-services-js",
   "dependencies": {
+    "@types/node": "^12.0.2",
     "https-proxy-agent": "^2.2.1",
     "uuid": ">=2.2.1"
   },
   "devDependencies": {
+    "@types/jasmine": "^3.3.12",
     "jasmine": "^3.3.1",
     "jsdoc": "^3.4.0",
     "priorityqueuejs": "^1.0.0",
